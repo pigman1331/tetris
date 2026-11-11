@@ -259,8 +259,9 @@ function fxStep(dt){
 function sizeCanvas(c,g,w,h){const d=devicePixelRatio||1;c.width=w*d;c.height=h*d;c.style.width=w+'px';c.style.height=h+'px';g.setTransform(d,0,0,d,0,0);g.imageSmoothingEnabled=false}
 function fit(){
   const touch=document.body.classList.contains('touch');
-  const availH=innerHeight-(touch?300:150)-60;
-  const availW=Math.min(innerWidth-32,560)-36-32-92-10-6;
+  const vw=document.documentElement.clientWidth||innerWidth,vh=document.documentElement.clientHeight||innerHeight;
+  const availH=vh-(touch?340:190)-60;
+  const availW=Math.min(vw-32,560)-36-32-92-10-6;
   cell=Math.max(12,Math.min(30,Math.floor(Math.min(availH/ROWS,availW/COLS))));
   mcell=Math.max(10,Math.min(18,Math.floor(cell*0.62)));
   sizeCanvas(bc,bg,cell*COLS,cell*ROWS);
